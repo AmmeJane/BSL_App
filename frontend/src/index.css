@@ -1,66 +1,38 @@
 @import "tailwindcss";
 
-/*
-
-@theme {
-  --color-primary: #646cff;
-}
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@layer theme {
-  .dark {
-    --color-primary: #fffff;
-  }
-}
-
-
-@layer base {
-  :root {
-    --color-primary: #646cff;
-    --color-secondary: #f9f9f9;
-    --color-background: #242424;
-    --color-text: rgba(255, 255, 255, 0.87);
-  }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --color-primary: #535bf2;
-      --color-secondary: #f9f9f9;
-      --color-background: #ffffff;
-      --color-text: #213547;
-    }
-  }
-}
-*/
-
 
 :root {
   color-scheme: light dark;
   color: #ffffff;
-  background-color: #E2F4FF;
-  --color-primary: #5FA8D3;
+  background-color: #0A1B34;
+  --color-primary: #1A3C6C;
   --color-secondary: #E2F4FF;
-  --color-background: #E2F4FF;
+  --color-text: #E2F4FF;
+  --color-darkertext: #ADE0FF;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) { /* change dark to light */
   :root {
     color: #213547;
     background-color: #E2F4FF;
     --color-primary: #5FA8D3;
-    --color-secondary: #E2F4FF;
-    --color-background: #E2F4FF;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+    --color-secondary: #E2F4FF; 
+    --color-text: #E2F4FF;
+    --color-darkertext: #ADE0FF;
   }
 }
 
 @layer base{
   .bg-primary {
     background-color: var(--color-primary);
+  }
+  .bg-background {
+    background-color: var(--color-background);
+  }
+  .text-text {
+    color: var(--color-text);
+  }
+  .text-darkertext {
+    color: var(--color-darkertext);
   }
 }

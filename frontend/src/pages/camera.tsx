@@ -9,7 +9,7 @@ export default function Home() {
         canvasEl
     });
     return (
-        <div className='h-[calc(100vh-160px)] flex items-center justify-center'>
+        <div className='flex items-center justify-center'>
             <video
                 style={{ display: 'none' }}
                 className='video'

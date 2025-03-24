@@ -12,7 +12,7 @@ const HeaderButton: React.FC<buttonParams> = ({ name,path }) => {
 
     return (
             <Link 
-                className={`p-4 ${isActive() ? 'text-white' : 'text-black'}`} 
+                className={`p-4 ${isActive() ? 'text-text' : 'text-darkertext'}`} 
                 to={path}
             >
                 <p className="h-full w-full flex items-center justify-center">{name}</p>
