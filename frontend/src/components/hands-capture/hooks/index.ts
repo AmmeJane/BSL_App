@@ -6,8 +6,10 @@ import {
   drawRectangle,
 } from '@mediapipe/drawing_utils';
 import { Hands, HAND_CONNECTIONS } from '@mediapipe/hands';
+import type { Results } from '@mediapipe/hands';
 import useKeyPointClassifier from '../hooks/useKeyPointClassifier';
 import CONFIGS from '../../../../constants';
+import SignMatch from '../../../game/SignMatcher';
 
 const maxVideoWidth = 960;
 const maxVideoHeight = 540;
@@ -24,8 +26,8 @@ function useGestureRecognition({videoElement, canvasEl}: IHandGestureLogic) {
 
   const { processLandmark } = useKeyPointClassifier();
 
-  async function onResults(results) {
-    if (canvasEl.current) {
+  async function onResults(results: Results) {
+    if (canvasEl.current || !results.image){
       const ctx = canvasEl.current.getContext('2d');
 
       ctx.save();
@@ -35,7 +37,11 @@ function useGestureRecognition({videoElement, canvasEl}: IHandGestureLogic) {
       if (results.multiHandLandmarks) {
         // Runs once for every hand
         for (const [index, landmarks] of results.multiHandLandmarks.entries()) { 
-          processLandmark(landmarks, results.image).then((val) => (handsGesture.current[index] = val));
+
+          // run db func here to compare to signs in db
+          //SignMatch(landmarks);
+          
+          processLandmark(landmarks, results.image).then((val) => (handsGesture.current[index] = val)); // HERE get closest match from db instead up to a certain point
           const landmarksX = landmarks.map((landmark) => landmark.x);
           const landmarksY = landmarks.map((landmark) => landmark.y);
           ctx.fillStyle = '#ff0000';
